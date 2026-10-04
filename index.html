@@ -4,93 +4,206 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Receitas da Semana</title>
+
+    <!-- Fontes do Google -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Limelight&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
     <style>
+        /* CSS Reset e Variáveis de Cores */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --bg-color: #fdf8f2;
+            --primary-color: #d95d39;
+            --secondary-color: #f0a868;
+            --card-bg: #ffffff;
+            --text-color: #2b2b2b;
+            --text-light: #666666;
+            --border-radius: 16px;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
         body {
-            margin: 0px;
-            background-color: rgb(248, 182, 59);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding-bottom: 40px;
         }
+
+        /* Header */
         header {
+            background: linear-gradient(135deg, #e05a47, #f2994a);
+            color: #ffffff;
             text-align: center;
-            font-size: 20px;
-            font-family: Limelight;
-            background-color: rgb(255, 166, 0);
-            padding-top: 15px;
-            padding-bottom: 25px;
-            border-bottom-left-radius: 50%;
-            border-bottom-right-radius: 50%;
-            margin-bottom: 3em;
+            padding: 40px 20px 50px;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 4px 15px rgba(224, 90, 71, 0.2);
+            margin-bottom: 30px;
         }
-        div {
-            background-color: orange;
-            width: 950px;
-            height: 450px;
-            margin: auto;
-            border-radius: 1em;
-            border: 3px solid black;
-            margin-bottom: 20px;
-            box-shadow: 2px 2px 3px black;
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
         }
-        div > h2 {
-            color: red;
-            margin-top: 0px;
-            padding: 5px 0px 0px 10px;
-            background-color: aliceblue;
-            border-radius: 15px 15px 0px 0px;
+
+        /* Container Principal */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Decoração do Topo (GG e GG2) */
+        .decor-images {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .decor-images img {
+            width: 48%;
+            max-width: 250px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        /* Card de Receita */
+        .recipe-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            transition: transform 0.2s ease;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-3px);
+        }
+
+        .recipe-header {
+            background-color: #fff4ed;
+            padding: 15px 20px;
+            border-bottom: 2px solid #ffe3d1;
+        }
+
+        .recipe-header h2 {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .recipe-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .recipe-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+
+        .recipe-content h3 {
+            font-size: 1.25rem;
             margin-bottom: 10px;
-            
+            color: var(--text-color);
         }
-        h3 {
-            text-align: center;
+
+        .recipe-content p {
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-bottom: 12px;
+            text-align: justify;
         }
-        img {
-            width: 400px;
-            border: 3px solid black;
-            border-radius: 1em;
-            margin-top: 1px;
-            float: left;
-            margin: 10px;
+
+        .recipe-content p:last-child {
+            margin-bottom: 0;
         }
-        h3 {
-            margin: auto;
-        }
-        p {
-            font-size: 20px;
-            margin-left: 20px;
-        }
-        .gg {
-            width: 300px;
-        }
-        .gg2 {
-            float: right;
-            width: 300px;
+
+        /* Layout Responsivo para Telas Maiores (Tablets/Desktops) */
+        @media (min-width: 768px) {
+            header h1 {
+                font-size: 3rem;
+            }
+
+            .recipe-body {
+                flex-direction: row;
+                align-items: flex-start;
+            }
+
+            .recipe-image {
+                width: 320px;
+                height: 240px;
+                flex-shrink: 0;
+            }
+
+            .decor-images img {
+                height: 160px;
+            }
         }
     </style>
-
 </head>
 <body>
+
     <header>
         <h1>Receitas da Semana</h1>
     </header>
-    <main>
-        <img class="gg" src="gg.jpg" alt="">
-        <img class="gg2" src="gg2.jpg" alt="">
-        <div>
-            <h2>Feijoada</h2>
-            <img src="feijoada.jpg" alt="">
-            <h3>Feijoada</h3>
-            <p> Uma feijoada completa, digna de restaurante, mas feita em casa, com os pertences que você preferir! Na receita tem a nossa sugestão de combinação, mas no fim tem proporção para você escolher. O passo a passo bem detalhado garante a feijoada saborosa e nada pesada.</p>
-            <p>Ela mistura influências indígenas, africanas e portugues. O prato usa feijão-preto e cortes variados de carne de porco.O cozimento lento deixa o caldo grosso e muito saboroso.</p>
-        </div>
-        <div>
-            <h2>Baião de Dois</h2>
-            <img src="baiao.jpg" alt="">
-            <h3>Baião de Dois</h3>
-            <p>O baião de dois é uma receita tradicional da culinária brasileira que une dois ingredientes clássicos da nossa gastronomia: o feijão com arroz. Esse prato é típico do Nordeste, mas é amado em todo o país! O método de como fazer baião de dois original leva feijão fradinho, arroz, queijo coalho, carne de sol e manteiga de garrafa. Com o passar do tempo, algumas substituições foram sendo feitas para se adequar aos ingredientes disponíveis e ao paladar, mas nem por isso a receita de baião de dois perdeu o seu sabor. O grande segredo do baião de dois é cozinhar o arroz no caldo do cozimento do feijão junto com os outros ingredientes. Assim, ele absorve o sabor de todos, deixando o prato de baião de dois delicioso. Depois de desligar o fogo, você adiciona o queijo fatiado para deixar que o calor da panela o derreta. Veja como fazer baião de dois e capriche na sua próxima refeição!</p>
-        </div>
+
+    <main class="container">
+        <!-- Imagens Decorativas do Topo -->
+        <section class="decor-images">
+            <img class="gg" src="gg.jpg" alt="Destaque da semana 1">
+            <img class="gg2" src="gg2.jpg" alt="Destaque da semana 2">
+        </section>
+
+        <!-- Receita 1: Feijoada -->
+        <article class="recipe-card">
+            <div class="recipe-header">
+                <h2>Feijoada</h2>
+            </div>
+            <div class="recipe-body">
+                <img class="recipe-image" src="feijoada.jpg" alt="Prato de Feijoada completa">
+                <div class="recipe-content">
+                    <h3>Feijoada Tradicional</h3>
+                    <p>Uma feijoada completa, digna de restaurante, mas feita em casa, com os pertences que você preferir! Na receita tem a nossa sugestão de combinação, mas no fim tem proporção para você escolher. O passo a passo bem detalhado garante a feijoada saborosa e nada pesada.</p>
+                    <p>Ela mistura influências indígenas, africanas e portuguesas. O prato usa feijão-preto e cortes variados de carne de porco. O cozimento lento deixa o caldo grosso e muito saboroso.</p>
+                </div>
+            </div>
+        </article>
+
+        <!-- Receita 2: Baião de Dois -->
+        <article class="recipe-card">
+            <div class="recipe-header">
+                <h2>Baião de Dois</h2>
+            </div>
+            <div class="recipe-body">
+                <img class="recipe-image" src="baiao.jpg" alt="Prato de Baião de Dois">
+                <div class="recipe-content">
+                    <h3>Baião de Dois Nordestino</h3>
+                    <p>O baião de dois é uma receita tradicional da culinária brasileira que une dois ingredientes clássicos da nossa gastronomia: o feijão com arroz. Esse prato é típico do Nordeste, mas é amado em todo o país! O método original leva feijão fradinho, arroz, queijo coalho, carne de sol e manteiga de garrafa.</p>
+                    <p>O grande segredo do baião de dois é cozinhar o arroz no caldo do cozimento do feijão junto com os outros ingredientes. Assim, ele absorve o sabor de todos, deixando o prato delicioso. Depois de desligar o fogo, você adiciona o queijo fatiado para deixar que o calor da panela o derreta.</p>
+                </div>
+            </div>
+        </article>
     </main>
+
 </body>
 </html>
